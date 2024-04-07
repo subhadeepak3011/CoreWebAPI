@@ -1,9 +1,99 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj": {}
+    "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj": {}
   },
   "projects": {
+    "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+        "projectName": "GHDWebAPI.Tests",
+        "projectPath": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+        "packagesPath": "C:\\Users\\subha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\subha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj": {
+                "projectPath": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {

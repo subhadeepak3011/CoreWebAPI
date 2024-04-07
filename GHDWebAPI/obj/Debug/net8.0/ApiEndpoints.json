@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "GHDWebAPI.Controllers.ProductsController",
-    "Method": "GetProduct",
+    "Method": "GetAllProducts",
     "RelativePath": "api/Products",
     "HttpMethod": "GET",
     "IsController": true,
@@ -90,7 +90,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "GHDWebAPI.Model.Product",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "GHDWebAPI.Controllers.ProductsController",

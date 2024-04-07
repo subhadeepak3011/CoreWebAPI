@@ -13,6 +13,7 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
 using NuGet.Protocol;
+using GHDWebAPI.Services;
 
 namespace GHDWebAPI.Controllers
 {
@@ -20,14 +21,27 @@ namespace GHDWebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly GHDWebAPIContext _context;
-        private readonly ILogger<ProductsController> _logger;   
-        public ProductsController(GHDWebAPIContext context, ILogger<ProductsController> logger)
+        #region INITIALISE
+
+        /// <summary>
+        /// readonly reference to the IProductService
+        /// </summary>
+        private readonly IProductService _service;
+
+        /// <summary>
+        /// readonly reference to the ILogger
+        /// </summary>
+        private readonly ILogger _logger;   
+        public ProductsController(IProductService service, ILogger logger)
         {
-            _context = context;
+            _service = service;
             _logger = logger;
          
         }
+
+        #endregion
+
+        #region READ
 
         /// <summary>
         /// Gets all the products from the DB
@@ -35,32 +49,90 @@ namespace GHDWebAPI.Controllers
         /// <returns></returns>
         // GET: api/Products
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
+        public IEnumerable<Product> GetAllProducts()
         {
             _logger.LogInformation("Fetching all products...");
-            return await _context.Product.ToListAsync();
+            return  _service.GetAll();
         }
 
         /// <summary>
         /// Gets the product with the given id from the DB
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">product id</param>
         /// <returns></returns>
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public ActionResult<Product> GetProduct(int id)
         {
             _logger.LogInformation("Fetching the product with id: " + id);
-            var product = await _context.Product.FindAsync(id);
+            var product = _service.GetById(id);
 
             if (product == null)
             {
                 _logger.LogError("Product Id: " + id + " could not be found");
-                return NotFound();
+                ModelState.AddModelError("", "Product Id does not exist");
+                var errorModel = DisplayError(ModelState);
+                return new BadRequestObjectResult(errorModel);
             }
 
             return product;
         }
+
+        #endregion
+
+        #region CREATE
+
+        /// <summary>
+        /// Creates a new product and adds it to the DB
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        // POST: api/Products
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public ActionResult<Product> PostProduct(Product product)
+        {
+            try
+            {
+                // ... check if this product has valid fields
+                if (!IsProductValid(product))
+                {
+                    var errorModel = DisplayError(ModelState);
+                    return new BadRequestObjectResult(errorModel);
+                }
+
+                // ... check if the model state is valid
+                if (!ModelState.IsValid)
+                {
+                    return new BadRequestObjectResult(ModelState);
+                }
+
+                _logger.LogInformation("Adding product to the DB...");
+
+                _service.Add(product);
+
+                _logger.LogInformation("Product has been created and added to the DB");
+
+                return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+
+            }
+            catch (Exception e)
+            {
+                // ... handle any exceptions that might cause the API to crash : for instance trying to update the product Id
+                var innerException = e.InnerException != null ? e.InnerException.Message : "";
+                ModelState.AddModelError(e.Message, innerException);
+                var errorModel = DisplayError(ModelState);
+
+                // ... caution!!!
+                _logger.LogError(innerException);
+                return new BadRequestObjectResult(errorModel);
+            }
+
+        }
+
+        #endregion
+
+        #region UPDATE
 
         /// <summary>
         /// Updates the product with the given id in the DB
@@ -71,13 +143,15 @@ namespace GHDWebAPI.Controllers
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public ActionResult<Product> PutProduct(int id, Product product)
         {
             try
-            { 
-                // ... check if this product has valid fields
-                if (!IsProductValid(product))
+            {
+                // ... check if product is null
+                if (product == null)
                 {
+                    _logger.LogError("Product is null as it does not have valid fields");
+                    ModelState.AddModelError("", "Please check that all the fields are entered in the correct format");
                     var errorModel = DisplayError(ModelState);
                     return new BadRequestObjectResult(errorModel);
                 }
@@ -102,14 +176,13 @@ namespace GHDWebAPI.Controllers
                 _logger.LogInformation("Saving product id: " + id + " to the DB...");
 
                 // ... update product
-                _context.Entry(product).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
+                _service.Update(product);
 
                 _logger.LogInformation("Product has been updated to the DB");
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!_service.ProductExists(id))
                 {
                     _logger.LogError("Product Id does not exist, hence update operation cannot be performed");
                     ModelState.AddModelError("", "Product Id does not exist");
@@ -125,42 +198,37 @@ namespace GHDWebAPI.Controllers
             return NoContent();
         }
 
+        #endregion
+
+        #region DELETE
+
         /// <summary>
-        /// Creates a new product and adds it to the DB
+        /// Deletes the product with the given id from the DB
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        // POST: api/Products
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        // DELETE: api/Products/5
+        [HttpDelete("{id}")]
+        public ActionResult DeleteProduct(int id)
         {
             try
             {
-                // ... check if this product has valid fields
-                if (!IsProductValid(product))
+                var product = _service.GetById(id);
+                if (product == null)
                 {
+                    _logger.LogError("Product Id does not exist, hence the product cannot be deleted from the DB");
+                    ModelState.AddModelError("", "Product Id does not exist");
                     var errorModel = DisplayError(ModelState);
                     return new BadRequestObjectResult(errorModel);
                 }
 
-                // ... check if the model state is valid
-                if (!ModelState.IsValid)
-                {
-                    return new BadRequestObjectResult(ModelState);
-                }
+                _logger.LogInformation("Deleting product id: " + id + " from the DB ...");
 
-                _logger.LogInformation("Adding product to the DB...");
+               _service.DeleteById(product.Id);
 
-                _context.Product.Add(product);
-                await _context.SaveChangesAsync();
-
-                _logger.LogInformation("Product has been created and added to the DB");
-
-                return CreatedAtAction("GetProduct", new { id = product.Id }, product);
-
+                _logger.LogInformation("Product has been deleted from the DB");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // ... handle any exceptions that might cause the API to crash : for instance trying to update the product Id
                 var innerException = e.InnerException != null ? e.InnerException.Message : "";
@@ -171,8 +239,12 @@ namespace GHDWebAPI.Controllers
                 _logger.LogError(innerException);
                 return new BadRequestObjectResult(errorModel);
             }
-
+            return NoContent();
         }
+
+        #endregion
+
+        #region PRIVATE METHODS
 
         /// <summary>
         /// Check if the product being created is a valid one
@@ -190,7 +262,7 @@ namespace GHDWebAPI.Controllers
             }
 
             // ... check if this product is unique : Combination of Name and Brand defines a unique product
-            if (!IsProductUnique(product))
+            if (!_service.IsProductUnique(product))
             {
                 string msg = "This product is not unique, combination of Name and Brand defines a unique product";
                 _logger.LogError(msg);
@@ -212,73 +284,12 @@ namespace GHDWebAPI.Controllers
             {
                 Status = (int)HttpStatusCode.BadRequest,
                 Title = ReasonPhrases.GetReasonPhrase((int)HttpStatusCode.BadRequest),
-                Errors = modelState.Values.SelectMany(x => x.Errors, (x,y) =>  y.ErrorMessage ).ToList()
+                Errors = modelState.Values.SelectMany(x => x.Errors, (x, y) => y.ErrorMessage).ToList()
             };
 
             return errorModel;
         }
-
-        /// <summary>
-        /// Deletes the product with the given id from the DB
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        // DELETE: api/Products/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
-        {
-            try
-            {
-                var product = await _context.Product.FindAsync(id);
-                if (product == null)
-                {
-                    _logger.LogError("Product Id does not exist, hence the product cannot be deleted from the DB");
-                    ModelState.AddModelError("", "Product Id does not exist");
-                    var errorModel = DisplayError(ModelState);
-                    return new BadRequestObjectResult(errorModel);
-                }
-
-                _logger.LogInformation("Deleting product id: " + id + " from the DB ...");
-
-                _context.Product.Remove(product);
-                await _context.SaveChangesAsync();
-
-                _logger.LogInformation("Product has been deleted from the DB");
-            }
-            catch (Exception e)
-            {
-                // ... handle any exceptions that might cause the API to crash : for instance trying to update the product Id
-                var innerException = e.InnerException != null ? e.InnerException.Message : "";
-                ModelState.AddModelError(e.Message, innerException);
-                var errorModel = DisplayError(ModelState);
-
-                // ... caution!!!
-                _logger.LogError(innerException);
-                return new BadRequestObjectResult(errorModel);
-            }
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Check if this product id exists
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private bool ProductExists(int id)
-        {
-            return _context.Product.Any(e => e.Id == id);
-        }
-
-        /// <summary>
-        /// Check if this product is unique : Combination of Name and Brand defines a unique product
-        /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
-        private bool IsProductUnique(Product product)
-        {
-            var result = !_context.Product.Any(p => product.Name == p.Name && product.Brand == p.Brand);
-
-            return result;
-        }
     }
+
+    #endregion
 }

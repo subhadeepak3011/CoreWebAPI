@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GHDWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5610b2e8b192074d068bbabd2cba2adbb6214fbc")]
 [assembly: System.Reflection.AssemblyProductAttribute("GHDWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GHDWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

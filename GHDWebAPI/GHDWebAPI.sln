@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHDWebAPI", "GHDWebAPI.csproj", "{8CF9D54D-8846-43F6-A535-257A57779DB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GHDWebAPI", "GHDWebAPI.csproj", "{8CF9D54D-8846-43F6-A535-257A57779DB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHDUnitTest", "..\GHDUnitTest\GHDUnitTest.csproj", "{9ADF1B1A-5C27-468E-8BF7-1C758DCE4EB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHDWebAPI.Tests", "..\GHDWebAPI.Tests\GHDWebAPI.Tests.csproj", "{10CF9F5F-F38C-4D66-975D-75B53A2033B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8CF9D54D-8846-43F6-A535-257A57779DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CF9D54D-8846-43F6-A535-257A57779DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CF9D54D-8846-43F6-A535-257A57779DB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9ADF1B1A-5C27-468E-8BF7-1C758DCE4EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9ADF1B1A-5C27-468E-8BF7-1C758DCE4EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9ADF1B1A-5C27-468E-8BF7-1C758DCE4EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9ADF1B1A-5C27-468E-8BF7-1C758DCE4EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CF9F5F-F38C-4D66-975D-75B53A2033B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CF9F5F-F38C-4D66-975D-75B53A2033B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CF9F5F-F38C-4D66-975D-75B53A2033B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CF9F5F-F38C-4D66-975D-75B53A2033B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
