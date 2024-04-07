@@ -11,6 +11,7 @@ using System.Collections.Immutable;
 using System.Reflection;
 using GHDWebAPI.Services;
 using GHDWebAPI.Controllers;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GHDWebAPIContext>(options =>
@@ -31,19 +32,24 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ILogger, Logger<ProductsController>>(); ;
 
-//builder.Services.AddSwaggerGen(s =>
-//{
-//    s.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-//    {
-//        Version = "v1",
-//        Title = "Product API",
-//        Description = "API for retrieving products"
-//    });
+builder.Services.AddSwaggerGen(s =>
+{
+    s.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Version = "v1",
+        Title = "GHD Product API",
+        Description = "API for retrieving products",
+        Contact = new OpenApiContact
+        {
+            Name = "Subha Venkatasubramanian",
+            Email = "subhadeepak3011@gmail.com"
+        }
+    });
 
-//    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-//    var xmlPath= Path.Combine(AppContext.BaseDirectory, xmlFile) ;
-//    s.IncludeXmlComments(xmlPath);
-//});
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    s.IncludeXmlComments(xmlPath);
+});
 
 var app = builder.Build();
 

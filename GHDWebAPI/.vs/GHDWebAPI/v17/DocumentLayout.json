@@ -1,12 +1,70 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\ghdwebapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|solutionrelative:ghdwebapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GHDWebAPI",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj",
+              "RelativeDocumentMoniker": "GHDWebAPI.csproj",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj",
+              "RelativeToolTip": "GHDWebAPI.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-07T12:12:38.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAYwEAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:12:01.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAkwDgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:07:48.852Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GHDWebAPI</name>
+    </assembly>
+    <members>
+        <member name="F:GHDWebAPI.Controllers.ProductsController._service">
+            <summary>
+            readonly reference to the IProductService
+            </summary>
+        </member>
+        <member name="F:GHDWebAPI.Controllers.ProductsController._logger">
+            <summary>
+            readonly reference to the ILogger
+            </summary>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.GetAllProducts">
+            <summary>
+            Gets all the products from the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.GetProduct(System.Int32)">
+            <summary>
+            Gets the product with the given id from the DB
+            </summary>
+            <param name="id">product id</param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.PostProduct(GHDWebAPI.Model.Product)">
+            <summary>
+            Creates a new product and adds it to the DB
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.PutProduct(System.Int32,GHDWebAPI.Model.Product)">
+            <summary>
+            Updates the product with the given id in the DB
+            </summary>
+            <param name="id"></param>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.DeleteProduct(System.Int32)">
+            <summary>
+            Deletes the product with the given id from the DB
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.IsProductValid(GHDWebAPI.Model.Product)">
+            <summary>
+            Check if the product being created is a valid one
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Controllers.ProductsController.DisplayError(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)">
+            <summary>
+            Display a customised error message
+            </summary>
+            <param name="modelState"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GHDWebAPI.Migrations.Init">
+            <inheritdoc />
+        </member>
+        <member name="M:GHDWebAPI.Migrations.Init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GHDWebAPI.Migrations.Init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:GHDWebAPI.Migrations.Init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:GHDWebAPI.Model.ErrorModel">
+            <summary>
+            Class to display customised error messages
+            </summary>
+        </member>
+        <member name="M:GHDWebAPI.Model.ErrorModel.#ctor">
+            <summary>
+            Initialise
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.ErrorModel.Title">
+            <summary>
+            Title of the error
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.ErrorModel.Status">
+            <summary>
+            Status code of the error
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.ErrorModel.Errors">
+            <summary>
+            List of descriptive error messages
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.Product.Id">
+            <summary>
+            Product Id
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.Product.Name">
+            <summary>
+            Name of the product
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.Product.Brand">
+            <summary>
+            Product brand
+            </summary>
+        </member>
+        <member name="P:GHDWebAPI.Model.Product.Price">
+            <summary>
+            Price of the product
+            </summary>
+        </member>
+        <member name="T:GHDWebAPI.Services.IProductService">
+            <summary>
+            Interface to the ProductService class
+            </summary>
+        </member>
+        <member name="F:GHDWebAPI.Services.ProductService._context">
+            <summary>
+            readonly reference to the DB context
+            </summary>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.#ctor(GHDWebAPI.Data.GHDWebAPIContext)">
+            <summary>
+            Initialise
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.GetAll">
+            <summary>
+            Get all the products from the DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.GetById(System.Int32)">
+            <summary>
+            Get product by id from the DB
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.Add(GHDWebAPI.Model.Product)">
+            <summary>
+            Add a new product to the DB
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.Update(GHDWebAPI.Model.Product)">
+            <summary>
+            Update an existing product in the DB
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.DeleteById(System.Int32)">
+            <summary>
+            Delete product with the given id from the DB
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.ProductExists(System.Int32)">
+            <summary>
+            Check if a product exists with the given id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GHDWebAPI.Services.ProductService.IsProductUnique(GHDWebAPI.Model.Product)">
+            <summary>
+            Check if this product is unique - combination of Name and Brand defines a unique product
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
