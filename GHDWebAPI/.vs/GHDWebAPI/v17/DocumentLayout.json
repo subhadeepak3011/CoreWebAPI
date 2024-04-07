@@ -3,8 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{10CF9F5F-F38C-4D66-975D-75B53A2033B5}|..\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi.tests\\productscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|solutionrelative:services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10CF9F5F-F38C-4D66-975D-75B53A2033B5}|..\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi.tests\\ghdwebapi.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8CF9D54D-8846-43F6-A535-257A57779DB1}|GHDWebAPI.csproj|c:\\users\\subha\\source\\repos\\corewebapi\\ghdwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +36,46 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Services\\ProductService.cs",
+              "RelativeToolTip": "Services\\ProductService.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAgwGoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:44:46.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\ProductsControllerTests.cs",
+              "RelativeDocumentMoniker": "..\\GHDWebAPI.Tests\\ProductsControllerTests.cs",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\ProductsControllerTests.cs",
+              "RelativeToolTip": "..\\GHDWebAPI.Tests\\ProductsControllerTests.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAALQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:31:05.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GHDWebAPI.Tests",
+              "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+              "RelativeDocumentMoniker": "..\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+              "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+              "RelativeToolTip": "..\\GHDWebAPI.Tests\\GHDWebAPI.Tests.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-07T12:30:49.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "GHDWebAPI",
               "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\GHDWebAPI.csproj",
               "RelativeDocumentMoniker": "GHDWebAPI.csproj",
@@ -38,20 +87,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAYwEAAAAAAAAAA",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAnwGQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T12:12:01.343Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\subha\\source\\repos\\CoreWebAPI\\GHDWebAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

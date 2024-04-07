@@ -17,6 +17,9 @@ using GHDWebAPI.Services;
 
 namespace GHDWebAPI.Controllers
 {
+    /// <summary>
+    /// Class for the Product Controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase

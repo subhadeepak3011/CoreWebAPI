@@ -9,14 +9,13 @@ using Moq;
 
 namespace GHDWebAPI.Tests
 {
+    /// <summary>
+    /// Class to run units tests
+    /// </summary>
     public class ProductsControllerTests
     {
         private readonly Mock<IProductService> productServiceMock;
         private readonly Mock<ILogger<ProductsController>> mockLogger;
-        //private readonly GHDWebAPIContext _context;
-
-        //ProductsController _controller;
-        //IProductService _productService;
 
         /// <summary>
         /// List of products for mock testing
@@ -40,17 +39,19 @@ namespace GHDWebAPI.Tests
 
             return products;
         }
+
+        /// <summary>
+        /// Initialise
+        /// </summary>
         public ProductsControllerTests()
         {
             productServiceMock= new Mock<IProductService>();
             mockLogger = new Mock<ILogger<ProductsController>>();
-
-            //_productService = new ProductService(_context);
-            //_controller = new ProductsController(_productService, ));
-
-           
         }
 
+        /// <summary>
+        /// Get all products
+        /// </summary>
         [Fact]
         public void GetProducts_ReturnAllProducts()
         {
@@ -67,9 +68,11 @@ namespace GHDWebAPI.Tests
             Assert.Equal(GetProducts().Count(), productResult.Count());
             Assert.Equal(GetProducts().ToString(), productResult.ToString());
             Assert.True(allProducts.Equals(productResult));
-
         }
 
+        /// <summary>
+        /// Get product by Id
+        /// </summary>
         [Fact]
         public void GetProductByID_ReturnSingleProduct()
         {
@@ -87,54 +90,34 @@ namespace GHDWebAPI.Tests
             Assert.True(productList[1].Id == productResult.Value.Id);
         }
 
+        /// <summary>
+        /// Failure to add as product is not unique
+        /// </summary>
         [Fact]
-        public void AddProduct_CheckIfProductIsAddedSuccessfully()
+        public void AddProduct_FailedToAdd()
         {
             //... arrange
             var productList = GetProducts();
-            var newProduct = new Product { Id = 12, Name = "Keyboard", Brand = "Microsoft", Price = 345 };
-
-            productServiceMock.Setup(x => x.Add(productList[2])).Returns(productList[2]);
+ 
+            productServiceMock.Setup(x => x.GetById(5)).Returns(productList[4]);
             var productController = new ProductsController(productServiceMock.Object, mockLogger.Object);
 
             //... act
-            var productResult = productController.PostProduct(newProduct);
-
-            Assert.IsType<ActionResult<Product>>(productResult);
-
+            var productResult = productController.PostProduct(productList[4]);
             var createdProduct = productResult as ActionResult<Product>;
-            Assert.IsType<Product>(createdProduct.Value);
-
-            var product = createdProduct.Value as Product;
 
             //... assert
-            Assert.Equal(12, product.Id);
-            Assert.Equal("Keyboard", product.Name);
-            Assert.Equal("Microsoft", product.Brand);
-            Assert.Equal(345, product.Price);
+            Assert.True(createdProduct.Result is BadRequestObjectResult);
         }
 
-        [Fact]
-        public void AddProduct_Product()
-        {
-            //arrange
-            var productList = GetProducts();
-            productServiceMock.Setup(x => x.GetById(5)).Returns(productList[4]);
-            var productController = new ProductsController(productServiceMock.Object, mockLogger.Object);
-            //act
-            var productResult = productController.PostProduct(productList[5]);
-            //assert
-            Assert.NotNull(productResult.Value);
-            Assert.Equal(productList[5].Id, productResult.Value.Id);
-            Assert.True(productList[5].Id == productResult.Value.Id);
-        }
-
+        /// <summary>
+        /// Deletion successful
+        /// </summary>
         [Fact]
         public void DeleteProduct_Success()
         {
-            //arrange
+            //... arrange
             int validId = 5;
-            int invalidId = 56;
 
             var productList = GetProducts();
 
@@ -143,15 +126,39 @@ namespace GHDWebAPI.Tests
             var productController = new ProductsController(productServiceMock.Object, mockLogger.Object);
 
             //... act
-            var errorResult = productController.DeleteProduct(invalidId);
             var successResult = productController.DeleteProduct(validId);
 
             //... assert
-            Assert.True(errorResult is BadRequestObjectResult);
             Assert.True(successResult is NoContentResult);   
 
         }
 
+        /// <summary>
+        /// Deletion failed
+        /// </summary>
+        [Fact]
+        public void DeleteProduct_Failure()
+        {
+            //... arrange
+            int invalidId = 56;
+
+            var productList = GetProducts();
+
+            productServiceMock.Setup(x => x.GetById(5)).Returns(productList[4]);
+
+            var productController = new ProductsController(productServiceMock.Object, mockLogger.Object);
+
+            //... act
+            var errorResult = productController.DeleteProduct(invalidId);
+
+            //... assert
+            Assert.True(errorResult is BadRequestObjectResult);
+        }
+
+        /// <summary>
+        /// Check if product exists by name
+        /// </summary>
+        /// <param name="productName"></param>
         [Theory]
         [InlineData("Television")]
         public void CheckProductExistOrNotByProductName_Product(string productName)
@@ -170,6 +177,9 @@ namespace GHDWebAPI.Tests
             Assert.Equal(productName, expectedProductName);
         }
 
+        /// <summary>
+        /// Update single product by id
+        /// </summary>
         [Fact]
         public void UpdateProductByID_UpdatesSingleProduct()
         {

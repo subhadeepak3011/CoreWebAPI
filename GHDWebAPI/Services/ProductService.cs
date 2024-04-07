@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GHDWebAPI.Services
 {
+    /// <summary>
+    /// Product service class
+    /// </summary>
 
     public class ProductService : IProductService
     {

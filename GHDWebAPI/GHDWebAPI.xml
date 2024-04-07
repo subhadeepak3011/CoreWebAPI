@@ -4,6 +4,11 @@
         <name>GHDWebAPI</name>
     </assembly>
     <members>
+        <member name="T:GHDWebAPI.Controllers.ProductsController">
+            <summary>
+            Class for the Product Controller
+            </summary>
+        </member>
         <member name="F:GHDWebAPI.Controllers.ProductsController._service">
             <summary>
             readonly reference to the IProductService
